@@ -1,0 +1,19 @@
+{{!-- kohne depo site papkasindan index.html faylindaki kodlari kopyalayip bura yapisdirmisdiq.
+ve burdaki kodlari parcalayib basqa fayllara yerlesdireceyik.
+Bu parcalanmani ona gore edirik ki, sonra nese deyisiklik edende rahat olsun. durub butun sehifelerde yox 1-inde edek. --}}
+
+
+
+{{>site-header}}
+{{!-- burda site-header.handlebar faylina referans verdik --}}
+
+<!-- Navigation -->
+{{>site-nav}} 
+{{!-- burda site-nav.handlebar faylina referans verdik ve {{>partials/site-nav}} yazmadiq, 
+cunki avtomatik ozu partialsda axtarir. --}}
+
+{{{body}}} 
+{{!-- bu setir sayesinde body hissesin alacaq. browserde hansi faylin yolun request etsek o fayli body olaraq render edecek --}}
+
+{{>site-footer}}
+{{!-- burda ise site-footer.handlebar faylina referans verdik --}}

@@ -1,0 +1,89 @@
+{{!-- blog-single idi ama dersde post.handlebars edir deye men de post.handlebars etdim --}}
+
+
+	<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+	<section class="page-image page-image-contact md-padding">
+		<h1 class="text-white text-center">BLOG</h1>
+	</section>
+
+	<!--==========================
+    Contact Section
+============================-->
+	<section id="blog" class="md-padding">
+		<div class="container">
+			<div class="row">
+<main id="main" class="col-md-8">
+					<div class="blog">
+						<div class="blog-img">
+							<img class="img-fluid" src="{{post.post_image}}" alt="">  {{!-- src-da . vardi sildim duzeldi --}}
+							{{!-- src="/img/blog-post.jpg" idi deye statik sekil gosterirdi --}}
+
+							{{!-- bootstrapdaki class="img-fluid" ishledirik ve postlarin blogda yerlesmesini o teyin edir
+							amma istesek css'e mudaxile edib postlarin seliqeli duzulusunu qurariq --}}
+						</div>
+						<div class="blog-content">
+							<ul class="blog-meta">
+								<li><i class="fas fa-user"></i>{{post.author.username}}</li>
+	{{!-- yazar her posta gore deyisdiyi ucun blog.handlebarsdakindan ferqli olaraq burda post. yazdiq author.username'den evvel --}}
+
+								<li><i class="fas fa-clock"></i>{{generateDate post.date 'DD MMM YYYY'}}</li>  {{!-- dersde etmese de ele bele etdim --}}
+								<li><i class="fas fa-comments"></i>57</li>
+								<a href="{{!-- /posts/category/{{_id}} --}}" ><li><i class="fas" >#</i>{{post.category.name}}</li></a>
+								{{!-- niye bu blog.handlebars'da isledi amma burda yox? ve nie author isledi bu yox --}}
+							</ul>
+							<h3>{{post.title}}</h3>  {{!-- sablon text idi ama daha postun basligi olacaq bu header'de --}}
+							<p>{{post.content}}</p>  {{!-- burda da sablon text idi, daha content olacaq bu paragraph'da --}}
+						</div>
+
+
+						<!-- blog comments -->
+						<div class="blog-comments">
+							<h3>(1) Comments</h3>
+
+							<!-- comment -->
+							<div class="media">
+								<div class="media-body">
+									<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span></h4>
+									<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+								</div>
+							</div>
+							<!-- /comment -->
+
+						</div>
+						<!-- /blog comments -->
+
+						<!-- reply form -->
+						<div class="reply-form">
+							<h3>Leave A Comment</h3>
+							<form>
+								<input class="form-control mb-4" type="text" placeholder="Name">
+								<input class="form-control mb-4" type="email" placeholder="Email">
+								<textarea class="form-control mb-4" row="5" placeholder="Add Your Commment"></textarea>
+                                
+								<button type="submit" class="main-btn">Submit</button>
+							</form>
+						</div>
+						<!-- /reply form -->
+					</div>
+				</main>
+				<!-- /Main -->
+				
+
+					<!-- /Search -->
+                    
+                    <!-- Posts sidebar  , Category and single post-->
+					
+					{{> site-sidebar}}
+
+					<!-- /Posts sidebar -->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+	</section>

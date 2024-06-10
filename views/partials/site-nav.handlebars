@@ -1,0 +1,72 @@
+{{!-- main.handlebars faylindaki nav etiketi icindeki hisseni bura aldiq. --}}
+
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="/">GASIM MAMMADOV</a> {{!-- href="#page-top" idi, / etdik. niye? --}}
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fas fa-bars"></i>
+			</button>
+
+{{!-- ⚠️hem burda hem de admin nav faylinda ele etmeliyem ki hansi sehifede olsaq onun adinin altinda xett olsun ki bilek. --}}
+			<div class="collapse navbar-collapse" id="navbarResponsive" >
+				<ul class="navbar-nav text-uppercase ml-auto"  >
+					<li class="nav-item" >
+						<a class="nav-link" href="/" style="font-weight: bold;">Home</a> 
+						<!-- index.html idi href ama sonradan deyisdiyim ucun ./ yazdim (./index yazsam islemez) ve asagidakilarda ise adlarin yazdim (.handlebars yazsam islemezdi)-->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/about" style="font-weight: bold;">About</a> 
+						{{!-- avtomatik olaraq routesde main.js'de axtarir about'u --}}
+					</li>
+
+					
+					<li class="nav-item">
+						<a class="nav-link" href="/blog" style="font-weight: bold;">Blog</a>
+					</li>
+					
+
+					{{!-- {{#if displayAdmin}} --}} {{!-- admin ucun etmisdim alinmadi --}}
+					{{#if displayLink}}
+					<li class="nav-item">
+						<a class="nav-link" href="/admin" style="font-weight: bold;">Admin</a> 
+						{{!-- avtomatik olaraq routesde main.js'de axtarir about'u --}}
+					</li>
+					{{/if}}
+
+					{{#if displayLink}} 
+					{{!-- eger app.js'deki displayLink true deyerin alsa (yeni ki login edilse) asagidaki add post hissesini 
+					gosterecek, false alsa gostermeyecek --}}
+					<li class="nav-item">
+						<a class="nav-link" href="/posts/new" style="font-weight: bold;">Add Post</a>
+						{{! /addpost da yaza bilerdik ama ele bele new yazdiq. routingde de qeyd etmeliyik. }}
+						{{!-- ve new routes'de main.js'de yox posts.js'de oldugu ucun /posts/new yazdiq --}}
+					</li>
+					{{/if}}
+
+					<li class="nav-item">
+						<a class="nav-link" href="/contact" style="font-weight: bold;">Contact</a>
+					</li>
+
+					{{#unless displayLink}} {{!-- unless if'in tersidir --}}
+				{{!-- eger app.js'deki displayLink false deyerin alsa (yeni ki login olmasa) asagidaki login ve register 
+				hisseni gorunecek. true deyerin alsa ise gorunmeyecek --}}
+					<li class="nav-item">
+						<a class="nav-link" href="/users/login" style="font-weight: bold;">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/users/register" style="font-weight: bold;">Register</a>
+					</li>
+					{{/unless}}
+
+					{{#if displayLink}} {{!-- yene yuxarida qeyd etdiyimiz kimi, login olanda gorsenir, olmayanda yox --}}
+					<li class="nav-item">
+						<a class="nav-link" href="/users/logout" style="font-weight: bold;">Log Out</a>
+					</li>
+					{{/if}}
+				</ul>
+			</div>
+		</div>
+	</nav>

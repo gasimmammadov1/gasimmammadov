@@ -1,0 +1,111 @@
+{{!-- admindeki index.handlebars sehifesinin adini deyisdim categories etdim. --}}
+
+
+	<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+	<section class="page-image page-image-about md-padding">
+		<h1 class="text-white text-center">CATEGORIES</h1>
+	</section>
+
+	<!--==========================
+    ABOUTUS Section
+============================-->
+	<section id="aboutus" class="md-padding">
+		<div class="container">
+{{!-- burdaki containeri sildik ve site-nav faylindan ul hissesin kopyaladiq bura.
+amma sonra burdan kesib admin-nav faylina qoyduq ve o fayli bura bagladiq: --}}
+
+{{> admin-nav}}
+
+{{!-- asagida bootstrap row ozelliklerini isletdik --}}
+<div class="clearfix"></div> {{!-- bunu isletdik ki navbarin yaninda yox altinda olsun --}}
+<div class="mb-5"></div> {{!-- yuxarya cox yaxindi deye margin bottom 5 isletdik --}}
+<div class="row">
+	<div class="col-md-4">
+{{!-- asagidaki hisseni add postdan kopyaladiq --}}
+		<form action="" {{!-- action bos saxladiq cunki post requestini eyni sehifeye edirik --}} method="post" enctype="multipart/form-data">  {{! enctype fayllari post ile gondermek ucundu}}
+        {{! action bizim postu gondereceyimiz zaman getmesini istediyimiz yeri yazmaq ucundu }}
+        {{! muveqqeti olaraq posts/test yaziriq }}
+          
+          <div class="row">
+            <div class="col-md-10">
+              
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  name="name" {{!--  Post.js'de olan schema'ya uygun ad verdim --}}
+                  {{!-- ve id yerine name yazdiq, cunki post request zamani server name oxuyur --}}
+                  type="username"
+                  placeholder="Category Name *"
+                  required="required"
+                  data-validation-required-message="Please enter post title."
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+
+
+ 
+             
+    
+              
+            </div>
+            {{! burda message hissesi var idi, sildik. }}
+            <div class="clearfix"></div>
+            <div class="col-lg-12 ">
+              <div id="success"></div>
+              <button  class="main-btn" style="margin-left: 0;" type="submit">Add Category</button> 
+              {{!-- buralari da register etdik --}}
+            </div>
+          </div>
+        </form>
+
+	</div>
+
+
+
+	<div class="col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th></th>
+				</tr>
+
+			</thead>
+			<tbody>
+				{{#each categories}} {{!-- admin routerinden gonderilen categories adli bilgini bura daxil edirik --}}
+				<tr>
+					<td>{{_id}}</td>
+					<td>{{name}}</td>
+					<td>
+{{!-- ⚠️ele etmeliyem ki edite basanda inputa cevrilsin name hissesi, sonra ise post edit meselelerinde nece etmisdimse ele edim burani da --}}
+						<button id="success" class="btn btn-warning" type="submit" style="font-weight: bold;">Edit</button>	
+					</td>
+					<td>
+						<form action="/admin/categories/{{_id}}?_method=DELETE" method="POST"> {{!-- dersde {{id}} idi deye xeta olurdu. --}}
+							{{!-- burda actiona post requesti gonderirik, admin/categoriese gedir ve lazim olan id'e sahib elementi tapir
+							amma bunu delete requestine cevirmek ucun asagidaki kodu yaziriq --}}
+     						<input type="hidden" name="_method"  value="DELETE">
+							{{!-- basqa name de yaza bilerdik amma hami bele isledir deye bele yazdiq --}}
+     						<button type="submit" class="btn btn-danger" style="font-weight: bold;">DELETE</button>
+						</form>
+					</td>
+				</tr>
+				{{/each}}
+
+
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+</div>
+			
+		</div>
+	</section>
+
+	

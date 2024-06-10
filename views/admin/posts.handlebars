@@ -1,0 +1,80 @@
+{{!-- admindeki categories.handlebars sehifesinin adini deyisdim posts etdim. --}}
+
+
+	<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+	<section class="page-image page-image-about md-padding">
+		<h1 class="text-white text-center">POSTS</h1>
+	</section>
+
+	<!--==========================
+    ABOUTUS Section
+============================-->
+	<section id="aboutus" class="md-padding">
+		<div class="container">
+{{!-- burdaki containeri sildik ve site-nav faylindan ul hissesin kopyaladiq bura.
+amma sonra burdan kesib admin-nav faylina qoyduq ve o fayli bura bagladiq: --}}
+
+{{> admin-nav}}
+
+{{!-- asagida bootstrap row ozelliklerini isletdik --}}
+<div class="clearfix"></div> {{!-- bunu isletdik ki navbarin yaninda yox altinda olsun --}}
+<div class="mb-5"></div> {{!-- yuxarya cox yaxindi deye margin bottom 5 isletdik --}}
+<div class="row">
+	
+
+
+
+	<div class="col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>TITLE</th>
+					<th>CATEGORY NAME</th>
+					<th></th>
+					<th></th>
+				</tr>
+
+			</thead>
+			<tbody>
+				{{#each posts}} {{!-- admin routerinden gonderilen posts adli bilgini bura daxil edirik --}}
+				<tr>
+					
+					<td><a href="/posts/{{_id}}">{{title}}</a></td>
+					{{!-- dersde yox idi, ozum yazdim <a></a>. postun adina basanda hemen posta getsin deye --}}
+					<td><a href="/categories/{{category._id}}">{{category.name}}</a></td>{{!-- 🤔❗NIYE BUNU Etmek ucun population path isletdik amma title ucun yox? --}}
+			{{!-- burdaki da dersde yox idi, ozum yazdim <a></a>. kateqoriya adina basanda hemen kateqoriyaya getsin deye
+			amma hele kateqoriyalar ucun ayri sehife duzeltmemisik deye islemeyecek. duzeldende blog sehifesine de qoyariq. --}}
+					<td>
+						<a class="btn btn-warning" href="/admin/posts/edit/{{_id}}" >EDIT</a>
+
+					</td>
+					<td> {{!-- asagida delete butonu hissesin ozum etdim categoriesde etdiyimize istinaden --}}
+						<form action="/admin/posts/{{_id}}?_method=DELETE" method="POST"> {{!-- dersde {{id}} idi deye xeta olurdu. --}}
+							{{!-- burda actiona post requesti gonderirik, admin/post'a gedir ve lazim olan id'e sahib elementi tapir
+							amma bunu delete requestine cevirmek ucun asagidaki kodu yaziriq --}}
+     						<input type="hidden" name="_method"  value="DELETE">
+							{{!-- basqa name de yaza bilerdik amma hami bele isledir deye bele yazdiq --}}
+     						<button type="submit" class="btn btn-danger">DELETE</button>
+						</form>
+					</td>
+
+					
+				</tr>
+				{{/each}}
+
+
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+</div>
+			
+		</div>
+	</section>
+
+	

@@ -1,0 +1,92 @@
+{{!-- kohne depo site papkasindan blog.html faylindaki kodlari kopyalayip bura yapisdirdiq --}}
+
+
+	<!--==========================
+    INSIDE HERO SECTION Section
+============================-->
+	<section class="page-image page-image-blog md-padding">
+		<h1 class="text-white text-center">BLOG</h1>
+	</section>
+
+	<!--==========================
+    Contact Section
+============================-->
+	<section id="blog" class="md-padding">
+		<div class="container">
+			<div class="row">
+				<main id="main" class="col-md-8">
+					{{#if sessionFlash.message}}
+						<div class="{{sessionFlash.type}}"> 
+							{{!-- .type yazdigimiz ucun posts.js'deki bootstrap classlari gelecek bura --}}
+							{{sessionFlash.message}} {{!-- ve bu setrle bildiririk ki hemen mesaj yazilsin burda. --}}
+						</div>
+					{{/if}}
+					<div class="row">
+						{{#each posts}} {{!-- her post geldiyi zaman --}}
+						<div class="col-md-6">
+							<div class="blog">
+	{{!-- ⚠️ hem burda hem de post.handlebarsda postun uzerinda 3 noqte olsun instadaki kimi, edit ve delete ucun. --}}
+								<div class="blog-img">
+									<a href="/posts/{{_id}}"><img src="{{post_image}}" class="img-fluid">
+									</a> {{!-- dersde yox idi, ozum yazdim <a></a>. sekilin ustune basanda hemen posta getsin deye --}}
+								{{!-- src="img/blog1.jpg" idi deye statik sekil gorsenirdi--}}
+								
+								</div>
+								<div class="blog-content">
+									<ul class="blog-meta">
+				
+										<li><i class="fas fa-users"></i><span class="writer">{{author.username}}</span></li>
+										{{!-- main.js'de populate edib author adli path yaratdiq User modelinden data ceken, onun .username'ini yazdiq John Doe yerine --}}
+										<li><i class="fas fa-clock"></i><span class="writer">{{generateDate date 'DD MMM YYYY'}} {{!-- 17 Dec 2018 idi, sora date elemisdim indi ise bele etdim --}}</span></li>
+										{{!-- generateDate funksiyamiz idi, ardinca ise istediyimiz formati qeyd etdik --}}
+										<li><i class="fas fa-comments"></i><span class="writer">13</span></li>
+										<a href="{{!-- /posts/category/{{_id}} --}}" ><li><i class="fas" >#</i><span class="writer">{{category.name}}</span></li></a>
+										{{!-- bunu dersde etmemisdi hele, ozum eledim ele bele .d --}}
+									</ul>
+									<h3>{{title}}</h3> {{!-- lorem ipsum idi, amma artiq gonderilen title'i gosterecek --}}
+									<p>{{truncate content 150}}</p> {{!-- burda ise sablon text idi, amma artiq gonderilen content'i gosterecek --}}
+									<a href="/posts/{{_id}}">Read More</a>  {{!-- ./blog-single idi evvel--}}
+									{{!-- indi ise duzeltdik, daha her postun oz id'sini alacaq databaseden --}} 
+								</div>
+							</div>
+						</div>
+						{{/each}} {{!-- dongunu bagladiq --}}
+						{{!-- evvelki diger 3 eded <div class="col-md-6" 'ni sildik --}}
+
+
+{{!-- kecen dersde navigations meselesinde error oldu deye ondan qabaqki kodlarla davam edirem ve bu kodlari yoruma cevirirem --}}
+
+{{!--                         <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav> --}}
+					</div>
+				</main>
+				
+
+					<!-- /Search -->
+                    
+                    <!-- Posts sidebar , Category and single post -->
+					{{> site-sidebar}}
+
+
+					
+					<!-- /Posts sidebar -->
+
+				
+				
+				
+				
+			</div>
+
+		</div>
+	</section>
