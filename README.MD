@@ -8,3 +8,5 @@
   - bezi butonlara tiklananda lazimi yerlere getmir
 
 - vercel ve netlify'a deploy etsen lazımi build kodları yerlesen faylları elave etmeyi unutma
+
+- edit test 1
