@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
   secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
     user: "ytbviewtst@gmail.com", /* test mailim */
-    pass: "efbxctrhxpytmpyq", /* https://myaccount.google.com/u/1/apppasswords daxil olub yaratdigim kod */
+    pass: "xmkuuggirnotnenb", /* https://myaccount.google.com/u/1/apppasswords daxil olub yaratdigim kod */
   },
 });
 
@@ -53,7 +53,7 @@ req.session.sessionFlash = { // flash mesajlar ucun session yaradiriq
   res.redirect('/contact')
 }
 
-main().catch(console.error);
+main().catch(console.error); // xeta mesajini res.send ile burda ekrana vermek istedim amma 2 defe res oldu deye http headers sent erroru olurdu
 
 
     

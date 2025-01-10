@@ -167,31 +167,26 @@ app.use((req, res, next) => {
   next(); // diger proseslere davam etsin
 });
 
-
-/*    // admin ucun edenmedim =/
-
+// Admin Display Middleware
 app.use((req, res, next) => {
-    const { userMail } = req.session; // userId deyiskenini req.session'dan goturduk
+  const { userMail } = req.session;
   
-    if (userMail=='admin@gmail.com') {
-      // eger sessionda userId varsa (yeni ki login edilibse)
-      res.locals = {
-        // displayLink true deyerin alacaq
-        displayAdmin: true,
-      };
-    } else {
-      // eger yoxdusa
-      res.locals = {
-        // false deyerin alacaq
-        displayAdmin: false,
-      };
-    }
+  if (userMail === 'admin@gmail.com') {
+    res.locals.displayAdmin = true;
+  } else {
+    res.locals.displayAdmin = false;
+  }
+  next();
+});
 
-  // (bu alacagi deyerler site-nav.handlebars faylinda rol oynayacaq)
-
-  next(); // diger proseslere davam etsin
-}); */
-
+const isAdmin = (req, res, next) => {
+  if (req.session.userMail === 'admin@gmail.com') {
+      next();
+  } else {
+      res.status(403).redirect('errors/403');
+      /* res.status(403).render('site/errors/403', { message: 'YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.' }); */
+  }
+};
 
 // Flash - Message Middleware /* BUNUN ISLEMEME SEBEBI ASAGIDA DISPLAYLINK KODLARINDA DA RES.LOCALS ISTIFADESSIDIR. */
 /* ona gore de yerin deyisib ondan asagiya qoydum */
@@ -209,13 +204,15 @@ const posts = require("./routes/posts");
 const users = require("./routes/users");
 const admin = require("./routes/admin/index");  
 const contact = require("./routes/contact");
+const errors = require("./routes/errors");
 
 app.use("/", main); // middleware teyin etdik, sayta girende maine gedecek
-app.use("/posts", posts);
+app.use("/posts", isAdmin, posts);
 app.use("/users", users);
-app.use("/admin", admin);
+app.use("/admin", isAdmin, admin);
 /* app.use('/admin/admin idi bundan onceki dersde', admin) */
 app.use("/contact", contact);
+app.use("/errors", errors);
 
 /* app.listen(port,hostname, () => {
   console.log(`Server calisiyor, http://${hostname}:${port}/` istesek ele bele yazariq bele)

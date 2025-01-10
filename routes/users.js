@@ -74,7 +74,7 @@ router.get('/login', (req, res) => {
                 if(user.password == password){
                     // USER SESSION . login etmis userin tekrar login etmesine ehtiyyac qalmasin deye.
                  req.session.userId = user._id // database'deki userin id'sini sessiona yaziriq.
-                 /* req.session.userMail = user.email; */ // emailini de yaziriq sessiona, admin ucun etmisdim alinmadi
+                 req.session.userMail = user.email; // emailini de yaziriq sessiona, admin ucun etmisdim alinmadi
                 // bunun evvel xeta vermesi normaldi, cunki app.js'de session barede kodlar yaradilmamisdi.
                     /* console.log("  True...pass✅✅" + "\n    Login success✅✅✅") */
                     res.redirect('/') // ve ana sehifeye yonlendiririk

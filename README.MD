@@ -1,12 +1,13 @@
 - onrender saytinda deploy etdim
 
-- bunu duzeldib bitirib portfeyl saytima elave edecem. (commitdeki bir cox lazimsiz qeydler gorunmesin deye yeni repo yaradib ve yeniden deploy edib sora yerlesdir)
+- userler comment elave ede bilsin 
 
-- sayti herterefli duzelt bitir. sekiller, yazilar falan ozune uygun et. kodlara lazimi guncellemeler et. 
+- fotolar ve textler deyis 
 
-- butun xetalari fix et.
-  - bezi butonlara tiklananda lazimi yerlere getmir
+- admin
+  - admin/posts postlarin kicik thumbnaillerin qoy
+  - admin blogda da postlari edit ede bilsin (instadaki kimi meselen)
 
-- vercel ve netlify'a deploy etsen lazımi build kodları yerlesen faylları elave etmeyi unutma
+- vercel ve netlify'a deploy etsen lazımi build kodları yerlesen faylları elave etmeyi unutma 
 
-- edit test 2
+- cyber sec + seo
