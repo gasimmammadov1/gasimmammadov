@@ -13,3 +13,5 @@
 - cyber sec + seo
 
 - moderator elave etme interfeysi ve moderator selahiyyet mehdudiyyeti
+
+- otp ve gmail ile login
