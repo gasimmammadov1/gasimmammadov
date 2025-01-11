@@ -11,3 +11,5 @@
 - vercel ve netlify'a deploy etsen lazımi build kodları yerlesen faylları elave etmeyi unutma 
 
 - cyber sec + seo
+
+- moderator elave etme interfeysi ve moderator selahiyyet mehdudiyyeti
