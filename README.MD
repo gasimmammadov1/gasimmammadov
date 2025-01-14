@@ -1,4 +1,4 @@
-- onrender saytinda deploy etdim
+⭕ToDo:
 
 - userler comment elave ede bilsin 
 
@@ -15,3 +15,27 @@
 - moderator elave etme interfeysi ve moderator selahiyyet mehdudiyyeti
 
 - otp ve gmail ile login
+
+- elave sekil, ses, video fayllari yerlesdire bilsin admin ve moderatorlar.
+
+- postlarda kateqoriya taginin adinin altinda xett olsun
+
+- her hansisa kateqoriyaya girende yuxarida kateqoriyanin adi gorunsun ve postlardaki kateqoriya tagi itsin. ve  postun ozune girdikde ise post adi yuxarida gorunsun ve kateqoriya tagi da tezeden gorunsun (blog sozu bunlarin hamisinda gorunsun yuxarida)
+
+- latest posts hemise umumilikde son postlari gostersin, her kateqoriyadaki son postlari yox. ve blogda yox sadece hansisa kateqoriyada ve postlara girdikde gorunsun
+
+- search hissesinde search post yazilsin. categoriesin altinda ise search categories olsun. admin post add hissesinde category secerken de category adin search etmek olsun. hemcinin admin posts ve admin categories hisselerinde de search olsun
+
+
+
+===========================================================================================================
+===========================================================================================================
+===========================================================================================================
+
+
+
+⭕ Qeydler:
+
+- onrender saytinda deploy etdim
+
+- search (post search) hem post adlarinda hem de post kateqoriyasinda axtaris edib neticeleri gosterir
