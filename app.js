@@ -230,7 +230,7 @@ app.use("/errors", errors);
   ); // saati ele bele elave etdim
 }); */
 
-app.listen(port, () => {
+/* app.listen(port, () => {
   const now = new Date();
   const options = {
     timeZone: "Asia/Baku", // Azerbaycan saati için
@@ -253,4 +253,29 @@ app.listen(port, () => {
   console.log(
     `Server is running✅, IP: ${ipAddress}, PORT: ${port}, ➡️  http://${ipAddress}:${port}/ ⬅️ , 🕘 ${formattedTime}`
   );
+}); */ // 192.168 tipli ip adres ucun
+
+
+const http = require('http');
+const axios = require('axios');
+
+const PORT = 3000;
+
+axios.get('https://api.ipify.org?format=json')
+    .then(response => {
+        const publicIP = response.data.ip;
+        console.log(`Server is running✅`);
+        console.log(`External IP: ${publicIP}, PORT: ${PORT}`);
+        console.log(`➡️  http://${publicIP}:${PORT}/ ⬅️`);
+    })
+    .catch(error => {
+        console.error('Failed to fetch external IP:', error.message);
+    });
+
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World!\n');
+}).listen(PORT, () => {
+    console.log(`Local Server running at http://localhost:${PORT}/`);
 });
+
