@@ -218,7 +218,7 @@ app.use("/errors", errors);
   console.log(`Server calisiyor, http://${hostname}:${port}/` istesek ele bele yazariq bele)
 }) */
 
-app.listen(port, () => {
+/* app.listen(port, () => {
   const now = new Date();
   const options = {
     timeZone: "Asia/Baku", // Azerbaycan saati ucun
@@ -228,7 +228,7 @@ app.listen(port, () => {
   console.log(
     `Server ishleyir✅, PORT:${port}, ➡️  http://127.0.0.1:3000/ ⬅️ , 🕘 ${formattedTime}`
   ); // saati ele bele elave etdim
-});
+}); */
 
 /* app.listen(port, () => {
   const now = new Date();
@@ -256,7 +256,7 @@ app.listen(port, () => {
 }); */ // 192.168 tipli ip adres ucun
 
 
-/* const http = require('http');
+const http = require('http');
 const axios = require('axios');
 
 const PORT = 3000;
@@ -277,5 +277,5 @@ http.createServer((req, res) => {
     res.end('Hello World!\n');
 }).listen(PORT, () => {
     console.log(`Local Server running at http://localhost:${PORT}/`);
-}); */
+});
 
