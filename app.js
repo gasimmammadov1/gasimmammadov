@@ -218,7 +218,7 @@ app.use("/errors", errors);
   console.log(`Server calisiyor, http://${hostname}:${port}/` istesek ele bele yazariq bele)
 }) */
 
-app.listen(port, () => {
+/* app.listen(port, () => {
   const now = new Date();
   const options = {
     timeZone: "Asia/Baku", // Azerbaycan saati ucun
@@ -228,4 +228,29 @@ app.listen(port, () => {
   console.log(
     `Server ishleyir✅, PORT:${port}, ➡️  http://127.0.0.1:3000/ ⬅️ , 🕘 ${formattedTime}`
   ); // saati ele bele elave etdim
+}); */
+
+app.listen(port, () => {
+  const now = new Date();
+  const options = {
+    timeZone: "Asia/Baku", // Azerbaycan saati için
+    hour12: false, // 24 saat formatında
+  };
+  const formattedTime = now.toLocaleTimeString("en-US", options);
+
+  const networkInterfaces = require('os').networkInterfaces();
+  let ipAddress = '127.0.0.1'; // Default IP Address for local machine
+  
+  for (let interfaceName in networkInterfaces) {
+    for (let interfaceInfo of networkInterfaces[interfaceName]) {
+      if (!interfaceInfo.internal && interfaceInfo.family === 'IPv4') {
+        ipAddress = interfaceInfo.address; // Set the non-internal IPv4 address
+        break;
+      }
+    }
+  }
+
+  console.log(
+    `Server is running✅, IP: ${ipAddress}, PORT: ${port}, ➡️  http://${ipAddress}:${port}/ ⬅️ , 🕘 ${formattedTime}`
+  );
 });

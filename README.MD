@@ -32,6 +32,6 @@
 
 ⭕**Qeydler**:
 
-- onrender saytinda deploy etdim
+- onrender saytinda deploy etmisdim. indi ise vercel saytinda etdim. xeta verirdi, sebebi saytda install ucun npm install yazsam da build ucun node app.js yazmamagim ve yazandan sonra ise kodlarimda vercel.json faylinda build kodlarini saxlamagim.(ikisinden biri isledilmelidi, ya saytda ya da kodlarda)
 
 - search (post search) hem post adlarinda hem de post kateqoriyasinda axtaris edib neticeleri gosterir
