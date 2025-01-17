@@ -32,6 +32,6 @@
 
 ⭕**Qeydler**:
 
-- onrender saytinda deploy etmisdim. indi ise vercel saytinda etdim. xeta verirdi, sebebi saytda install ucun npm install yazsam da build ucun node app.js yazmamagim ve yazandan sonra ise kodlarimda vercel.json faylinda build kodlarini saxlamagim.(ikisinden biri isledilmelidi, ya saytda ya da kodlarda)
+- onrender saytinda deploy etmisdim. vercel saytinda etmeye calisdim. xeta verirdi, sebebi saytda ve ya terminalda build ucun node app.js yazmamagim ve yazandan sonra ise kodlarimda vercel.json faylinda build kodlarini saxlamagim idi. amma vercel yene de alinmadi, hersey qaydasinda olsa da build prosesi uzun cekdi, 45 dq olanda vercel avtomatik error kimi algiladi. deyesen backend olmur, tekce react falan kimi front end proyektleri ucundu. (vercel.json faylin da sildim). netlify da yoxladim ve onda da building uzun cekdi, 22 dq time limit doldu error oldu. onrender kimi free birsey tapim gerek ama onun kimi gec acilmasin.
 
 - search (post search) hem post adlarinda hem de post kateqoriyasinda axtaris edib neticeleri gosterir
