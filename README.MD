@@ -9,6 +9,8 @@
   - admin blogda da postlari edit ede bilsin (instadaki kimi meselen)
   - moderator elave etme interfeysi ve moderator selahiyyet mehdudiyyeti
   - elave sekil, ses, video fayllari yerlesdire bilsin admin ve moderatorlar.
+  - profil foto ve nomre elave etmek
+  - profilde password ve diger bilgileri editleye bilmek
 
 - vercel ve netlify'a deploy etsen lazımi build kodları yerlesen faylları elave etmeyi unutma 
 
