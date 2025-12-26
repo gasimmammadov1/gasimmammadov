@@ -1,4 +1,4 @@
-const path = require("path"); 
+const path = require("path");
 
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -16,7 +16,7 @@ npm install express-handlebars@3.1.0
 */
 
 // Using Node.js `require()`
-const mongoose = require("mongoose");   
+const mongoose = require("mongoose");
 
 /* // Using ES6 imports
 import mongoose from 'mongoose'; */
@@ -27,10 +27,10 @@ const fileUpload = require("express-fileupload"); // bu modul sayta yuklenen fay
 
 const generateDate = require("./helpers/generateDate").generateDate; // generateDate.js faylini import etdik
 
-const limit = require("./helpers/limit").limit; 
-// helpers qovlugundaki limit faylinda yerlesen limit funksiyasini buraya limit adli sabit deyisenle menimsetdik, yeni ki import etdik 
+const limit = require("./helpers/limit").limit;
+// helpers qovlugundaki limit faylinda yerlesen limit funksiyasini buraya limit adli sabit deyisenle menimsetdik, yeni ki import etdik
 
-const truncate = require("./helpers/truncate").truncate; 
+const truncate = require("./helpers/truncate").truncate;
 
 const expressSession = require("express-session"); // session yaradmaq ucun lazim olan modul
 
@@ -85,8 +85,6 @@ app.use(
   })
 );
 
-
-
 app.use(fileUpload()); // sayta fayl yuklemek ucun lazim olan middleware ve bunu yazdigimiz sira onemlidir, requestlerden once olmalidir.
 // posts.js'de fileUpload ozelliyi islesin deye app.use ile yazdigim bu middlewareleri asagidaki routes setrlerinden evvel yazmaliyiq
 app.use(express.static("public"));
@@ -102,22 +100,22 @@ app.use(methodOverride("_method"));
 generateDate.js'e kecirdik deye burdakin yorum etdim
 }) */
 
-
 // Handlebars helpers
 
 /* evvelki derslerden ferqli olaraq asagidaki kodlari isledirik: */
-const hbs = exphbs.create ({ // helpers'i bu cur toplu isletmek ucun handlebars documentation'unda etrafli melumat var
-  helpers : {
-    generateDate: generateDate, 
+const hbs = exphbs.create({
+  // helpers'i bu cur toplu isletmek ucun handlebars documentation'unda etrafli melumat var
+  helpers: {
+    generateDate: generateDate,
     limit: limit, // limit.js'deki limit funksiyasini daxil etdim
     truncate: truncate, // truncate.js'deki truncate funksiyasini da daxil etdim
-  }
-})
+  },
+});
 
 // app.engine('handlebars', engine());
 app.engine("handlebars", hbs.engine); // evvel hbs.engine yerine asagidaki kimi yazirdiq:
 /* app.engine("handlebars", exphbs({ helpers: { generateDate: generateDate } })); evvelki derslerde bele yazirdiq */
- // helpers ucun elave fayl yaratmasaydim exphbs() yerine hbs.engine yazardim burda.
+// helpers ucun elave fayl yaratmasaydim exphbs() yerine hbs.engine yazardim burda.
 // resmi saytda teze kodlarda artiq exphbs yerine yuxardaki kimi engine yazilirdi
 //  app.engine('handlebars', exphbs.engine()) videonun komentinde gordum,
 //  kohne versiya yuklemek yerine bele yazsam duzelecekmis ama eybi yox.
@@ -136,8 +134,6 @@ app.use(bodyParser.json());
   next() // eger bu setri yazmasaq onda emr icra edildikden sonraki prosesler islemeyecek
  }
  app.use('/', myMiddleware) // ana sehifede bu kod isleyecek amma diger sehifelerde de / isaresi var deye onlarda da isleyecek */
-
-
 
 // DISPLAY Link Middleware
 /* login etdiyimiz zaman navigationsdaki butonlar arasinda daha login ve ya register hisselerin gormeyimize ehtiyyac yoxdur
@@ -170,8 +166,8 @@ app.use((req, res, next) => {
 // Admin Display Middleware
 app.use((req, res, next) => {
   const { userMail } = req.session;
-  
-  if (userMail === 'admin@gmail.com') {
+
+  if (userMail === "admin@gmail.com") {
     res.locals.displayAdmin = true;
   } else {
     res.locals.displayAdmin = false;
@@ -180,11 +176,11 @@ app.use((req, res, next) => {
 });
 
 const isAdmin = (req, res, next) => {
-  if (req.session.userMail === 'admin@gmail.com') {
-      next();
+  if (req.session.userMail === "admin@gmail.com") {
+    next();
   } else {
-      res.status(403).redirect('errors/403');
-      /* res.status(403).render('site/errors/403', { message: 'YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.' }); */
+    res.status(403).redirect("errors/403");
+    /* res.status(403).render('site/errors/403', { message: 'YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.' }); */
   }
 };
 
@@ -199,10 +195,14 @@ app.use((req, res, next) => {
   next(); // diger proseslere davam etsin
 });
 
+app.get("/healthz", (req, res) => {
+  res.status(200).send("ok");
+});
+
 const main = require("./routes/main"); // burdan kesdiyimiz routerleri yigdigimiz main faylin import edirik.
 const posts = require("./routes/posts");
 const users = require("./routes/users");
-const admin = require("./routes/admin/index");  
+const admin = require("./routes/admin/index");
 const contact = require("./routes/contact");
 const errors = require("./routes/errors");
 
@@ -255,17 +255,15 @@ app.listen(port, () => {
   );
 }); */ // 192.168 tipli ip adres ucun
 
-
-const axios = require('axios');
+const axios = require("axios");
 
 const getExternalIp = async () => {
-    try {
-        const response = await axios.get('https://api.ipify.org?format=json');
-        console.log("External IP:", response.data.ip);
-    } catch (error) {
-        console.error("Failed to fetch external IP:", error.message);
-    }
+  try {
+    const response = await axios.get("https://api.ipify.org?format=json");
+    console.log("External IP:", response.data.ip);
+  } catch (error) {
+    console.error("Failed to fetch external IP:", error.message);
+  }
 };
 
 getExternalIp();
-
